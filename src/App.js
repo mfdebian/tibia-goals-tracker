@@ -1,10 +1,12 @@
 import './App.css';
+import GoalList from './components/goals/GoalList';
 
-function App() {
+function App() {  
   return (
     <div className="App">
       <header className="App-header">
-        <p> Daily goals tracker</p>
+        <h3> Daily goals tracker</h3>
+        <GoalList />
       </header>
     </div>
   );
