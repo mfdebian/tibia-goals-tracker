@@ -6,13 +6,10 @@ function App() {
   return (
     <Grid
       container
-      spacing={0}
       direction="column"
       alignItems="center"
-      justifyContent="center"
-      mt={2}
     >
-      <Typography variant="h6" mb={2}>
+      <Typography variant="h3" gutterBottom>
         Daily goals tracker
       </Typography>
       <GoalList />
