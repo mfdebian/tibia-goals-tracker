@@ -1,3 +1,9 @@
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Checkbox from '@mui/material/Checkbox';
+
 function Goal(props) {
   const { goal, checkCompleted } = props;
 
@@ -6,16 +12,20 @@ function Goal(props) {
   }
 
   return (
-    <div className="goal" key={goal.id}>
-      <p>{goal.name}</p>
-      <input
-        type="checkbox"
-        checked={goal.completed}
-        onChange={() => {handleChange(goal.id)}}
-      />
-        {goal.completed}
-      <p>{goal.amount}</p>
-    </div>
+    <>
+      <Card variant="outlined">
+        <CardContent>
+        <Typography variant='body1'>{goal.name}</Typography>
+          <CardActions>
+            <Checkbox
+              checked={goal.completed}
+              onChange={() => {handleChange(goal.id)}}
+            />
+          </CardActions>
+          <Typography>{goal.amount}</Typography>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../../App.css';
 import Goal from './Goal';
 
 function GoalList() {
@@ -37,7 +36,7 @@ function GoalList() {
   }
 
   return (
-    <div className="App">
+    <>
       {
         goals.map(goal => {
           return (
@@ -49,7 +48,7 @@ function GoalList() {
           )
         })
       }
-    </div>
+    </>
   )
 }
 

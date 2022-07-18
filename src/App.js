@@ -1,14 +1,22 @@
-import './App.css';
+import { Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import GoalList from './components/goals/GoalList';
 
 function App() {  
   return (
-    <div className="App">
-      <header className="App-header">
-        <h3> Daily goals tracker</h3>
-        <GoalList />
-      </header>
-    </div>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      mt={2}
+    >
+      <Typography variant="h6" mb={2}>
+        Daily goals tracker
+      </Typography>
+      <GoalList />
+    </Grid>
   );
 }
 
