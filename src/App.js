@@ -10,7 +10,7 @@ function App() {
       alignItems="center"
     >
       <Typography variant="h3" gutterBottom>
-        Daily goals tracker
+        Goals tracker
       </Typography>
       <GoalList />
     </Grid>

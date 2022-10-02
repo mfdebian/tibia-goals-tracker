@@ -1,5 +1,5 @@
 {
-  "name": "daily-goals-tracker",
+  "name": "goals-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
