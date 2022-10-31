@@ -6,10 +6,15 @@ import Checkbox from '@mui/material/Checkbox';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 
 function Goal(props) {
-  const { goal, checkCompleted, addAndSubstractTriedTimes } = props;
+  const { goal,
+    checkCompleted,
+    addAndSubstractTriedTimes,
+    deleteGoal
+  } = props;
 
   const handleChange = (id) => {
     checkCompleted(id);
@@ -19,10 +24,21 @@ function Goal(props) {
     addAndSubstractTriedTimes(id, operation);
   }
 
+  const handleDelete = (id) => {
+    deleteGoal(id);
+  }
+
   return (
     <Card variant="outlined">
       <CardContent>
-        <Typography variant="h5">{goal.name}</Typography>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+        }}>
+          <Typography variant="h5">{goal.name}</Typography>
+          <DeleteIcon color="primary" onClick={()=>{handleDelete(goal.id)}}/>
+        </Box>
         <Divider variant="middle"></Divider>
         <Box>
           <Typography variant="caption">Logrado:</Typography>

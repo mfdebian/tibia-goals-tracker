@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -39,7 +40,7 @@ function AddGoal(props) {
   }
 
   return (
-    <div>
+    <Box sx={{ width: '60em'}}>
       <form>
         Goal diario
         <Switch
@@ -79,7 +80,7 @@ function AddGoal(props) {
           />
         </div>
       </form>
-    </div>
+    </Box>
   )
 }
 

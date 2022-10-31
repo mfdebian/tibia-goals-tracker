@@ -81,13 +81,18 @@ function GoalList() {
 
   const addGoal = (goal) => {
     let updatedGoals = [...goals];
-    updatedGoals.push(goal);
+    updatedGoals.unshift(goal);
     setGoals(updatedGoals);
   }
 
   const handleAddGoal = () => {
     let negatedShowAddGoalForm = !showAddGoalForm;
     setShowAddGoalForm(negatedShowAddGoalForm);
+  }
+
+  const deleteGoal = (id) => {
+    let updatedGoals = [...goals].filter(goal => goal.id !== id);
+    setGoals(updatedGoals);
   }
 
   return (
@@ -108,11 +113,12 @@ function GoalList() {
           {
             goals.map(goal => {
               return (
-                <Grid item xs={4} key={goal.id}>
+                <Grid item xs={4} key={goal.id} sx={{ width: '60em'}}>
                   <Goal
-                    goal={goal} 
-                    checkCompleted={checkCompleted} 
-                    addAndSubstractTriedTimes={addAndSubstractTriedTimes} 
+                    goal={goal}
+                    checkCompleted={checkCompleted}
+                    addAndSubstractTriedTimes={addAndSubstractTriedTimes}
+                    deleteGoal={deleteGoal}
                   />
                 </Grid>
               )
