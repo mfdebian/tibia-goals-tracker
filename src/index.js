@@ -4,10 +4,13 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { RouterProvider } from "react-router-dom";
+import { app } from './firebase';
 import { darkTheme } from './theme';
 import { router } from './routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+console.log('app:', app);
 
 root.render(
   <React.StrictMode>
