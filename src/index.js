@@ -1,23 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import App from './App';
+import { RouterProvider } from "react-router-dom";
+import { darkTheme } from './theme';
+import { router } from './routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
 
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <App/>
+      <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
 );
