@@ -8,7 +8,6 @@ import AddGoal from './AddGoal';
 import { allGoalsQuery, getData } from '../../firestore';
 
 function GoalList() {
-
   const [goals, setGoals] = useState([]);
   const [showAddGoalForm, setShowAddGoalForm] = useState(false);
   
@@ -22,43 +21,13 @@ function GoalList() {
       .catch(err => {
         console.log(err);
       })
-  }, [])
-
-
-  const checkCompleted = (id) => {
-    let updatedGoals = [...goals];
-    let goalIndex = updatedGoals.findIndex(goal => goal.id === id);
-    let goal = updatedGoals[goalIndex];
-    goal.completed = !goal.completed;
-    
-    setGoals(updatedGoals);
-  }
-
-  const addAndSubstractTriedTimes = (id, operation) => {
-    let updatedGoals = [...goals];
-    let goalIndex = updatedGoals.findIndex(goal => goal.id === id);
-    let goal = updatedGoals[goalIndex];
-    if(operation === "-") {
-      goal.triedTimes-=1;
-    } else if(operation === "+") {
-      goal.triedTimes+=1;
-    } else {
-      return
-    }
-
-    setGoals(updatedGoals);
-  }
+  }, []);
 
   const addGoal = (goal) => {
     console.log(goal);
     let updatedGoals = [...goals];
     updatedGoals.unshift(goal);
     setGoals(updatedGoals);
-  }
-
-  const handleAddGoal = () => {
-    let negatedShowAddGoalForm = !showAddGoalForm;
-    setShowAddGoalForm(negatedShowAddGoalForm);
   }
 
   const deleteGoal = (id) => {
@@ -73,11 +42,11 @@ function GoalList() {
         color="secondary"
         label="Add goal"
         aria-label="add goal"
-        onClick={handleAddGoal}
+        onClick={()=> {setShowAddGoalForm(showAddGoalForm => !showAddGoalForm)}}
         sx={{ mb: 2 }}
       />
       {
-        showAddGoalForm ? <AddGoal  addGoal={addGoal} /> : null
+        showAddGoalForm && <AddGoal  addGoal={addGoal} />
       }
       <Grid container spacing={1} >
         <Grid container item spacing={3}>
@@ -87,8 +56,6 @@ function GoalList() {
                 <Grid item xs={4} key={goal.id} sx={{ width: '60em'}}>
                   <Goal
                     goal={goal}
-                    checkCompleted={checkCompleted}
-                    addAndSubstractTriedTimes={addAndSubstractTriedTimes}
                     deleteGoal={deleteGoal}
                   />
                 </Grid>

@@ -5,51 +5,51 @@ import Chip from '@mui/material/Chip';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Switch from '@mui/material/Switch';
 
-function AddGoal(props) {
-  const { addGoal } = props;
+function AddTask(props) {
+  const { addTask } = props;
 
-  const [dailyGoal, setDailyGoal] = useState(true);
-  const [goalName, setGoalName] = useState("");
-  const [goalAmount, setGoalAmount] = useState(0);
+  const [dailyTask, setDailyTask] = useState(true);
+  const [taskName, setTaskName] = useState("");
+  const [taskAmount, setTaskAmount] = useState(0);
 
   const handleDaily = (event) => {
-    setDailyGoal(event.target.checked);
+    setDailyTask(event.target.checked);
   };
   
   const handleName = (event) => {
-    setGoalName(event.target.value);
+    setTaskName(event.target.value);
   };
 
   const handleAmount = (event) => {
     let number = parseInt(event.target.value);
-    setGoalAmount(isNaN(number) ? 0 : number);
+    setTaskAmount(isNaN(number) ? 0 : number);
   };
 
   const handleSubmit = (event) => {
-    let goal = {
+    let task = {
       id: Date.now(),
-      name: goalName,
-      daily: dailyGoal,
+      name: taskName,
+      daily: dailyTask,
       completed: false,
       currentAmount: 0,
-      amount: goalAmount,
-      maxAmount: goalAmount,
+      amount: taskAmount,
+      maxAmount: taskAmount,
     }
-    addGoal(goal);
+    addTask(task);
   }
 
   return (
     <Box sx={{ width: '60em'}}>
       <form>
-        Goal diario
+        Task diario
         <Switch
-          checked={dailyGoal}
+          checked={dailyTask}
           onChange= {handleDaily}
           inputProps={{ 'aria-label': 'controlled' }}
         />
         <div>
           <TextField
-            label="goal"
+            label="task"
             variant="filled"
             sx={{ mb: 2, width:1/2 }}
             onChange={handleName}
@@ -67,7 +67,7 @@ function AddGoal(props) {
             icon={<CloudUploadIcon />}
             color="primary"
             label="Add"
-            aria-label="submit new goal"
+            aria-label="submit new task"
             sx={{
               mb: 2,
               mt: 2,
@@ -83,4 +83,4 @@ function AddGoal(props) {
   )
 }
 
-export default AddGoal;
+export default AddTask;

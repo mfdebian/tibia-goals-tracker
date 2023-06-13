@@ -10,13 +10,13 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 
-function Goal(props) {
-  const { deleteGoal } = props;
+function Task(props) {  
+  const { deleteTask } = props;
 
-  const [goal, setGoal] = useState(props.goal);
+  const [task, setTask] = useState(props.task);
 
   const handleDelete = (id) => {
-    deleteGoal(id);
+    deleteTask(id);
   }
 
   return (
@@ -27,31 +27,40 @@ function Goal(props) {
           flexDirection: 'row',
           justifyContent: 'space-between'
         }}>
-          <Typography variant="h5">{goal.name}</Typography>
-          <DeleteIcon color="primary" onClick={()=>{handleDelete(goal.id)}}/>
+          <Typography variant="h5">{task.name}</Typography>
+          <DeleteIcon color="primary" onClick={()=>{handleDelete(task.id)}}/>
         </Box>
         <Divider variant="middle"></Divider>
         <Box>
           <Typography variant="caption">Logrado:</Typography>
           <Checkbox
-            checked={goal.completed}
-            onChange={() => {setGoal(goal => ({...goal, completed: !goal.completed}))}}
+            checked={task.completed}
+            onChange={() => {setTask(task => ({...task, completed: !task.completed}))}}
           />
+        </Box>
+        { task.maxAmount > 1 ?
+            <Box>
+              <Typography variant="caption" mr={1}>Cantidad:</Typography>
+              <Typography variant="h6" display="inline">{task.amount}</Typography>
+            </Box>
+          : null
+        }
+        <Box>
           <Typography variant="caption" mr={1}>Intentos:</Typography>
           <Fab 
             size="small"
             color="secondary"
             aria-label="add"
-            onClick={()=>{setGoal(goal => ({...goal, currentAmount: goal.currentAmount - 1}))}}
+            onClick={()=>{setTask(task => ({...task, currentAmount: task.currentAmount - 1}))}}
           >
             <RemoveIcon />
           </Fab>
-          <Typography variant="h6" margin={1} display="inline">{goal.currentAmount}</Typography>
+          <Typography variant="h6" margin={1} display="inline">{task.currentAmount}</Typography>
           <Fab
             size="small"
             color="secondary"
             aria-label="add"
-            onClick={()=>{setGoal(goal => ({...goal, currentAmount: goal.currentAmount + 1}))}}
+            onClick={()=>{setTask(task => ({...task, currentAmount: task.currentAmount + 1}))}}
           >
             <AddIcon />
           </Fab>
@@ -61,4 +70,4 @@ function Goal(props) {
   )
 }
 
-export default Goal;
+export default Task;

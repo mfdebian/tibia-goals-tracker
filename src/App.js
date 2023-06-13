@@ -6,6 +6,7 @@ import Fab from '@mui/material/Fab';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { getAuth, signOut } from "firebase/auth";
 import GoalList from './components/goals/GoalList';
+import TaskList from './components/tasks/TaskList';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         </Typography>
       </Box>
       <GoalList />
+      <TaskList />
       <Fab
         size="small"
         color="secondary"

@@ -7,6 +7,8 @@ const db = getFirestore(app);
 
 export const allGoalsQuery = query(collection(db, "goals"));
 
+export const allTasksQuery = query(collection(db, "tasks"));
+
 export const getData = async (query) => {
   return await getDocs(query);
 }
