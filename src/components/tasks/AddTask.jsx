@@ -9,13 +9,13 @@ function AddTask(props) {
   const { addTask } = props;
 
   const [dailyTask, setDailyTask] = useState(true);
-  const [taskName, setTaskName] = useState("");
+  const [taskName, setTaskName] = useState('');
   const [taskAmount, setTaskAmount] = useState(0);
 
   const handleDaily = (event) => {
     setDailyTask(event.target.checked);
   };
-  
+
   const handleName = (event) => {
     setTaskName(event.target.value);
   };
@@ -34,32 +34,32 @@ function AddTask(props) {
       currentAmount: 0,
       amount: taskAmount,
       maxAmount: taskAmount,
-    }
+    };
     addTask(task);
-  }
+  };
 
   return (
-    <Box sx={{ width: '60em'}}>
+    <Box sx={{ width: '60em' }}>
       <form>
         Task diario
         <Switch
           checked={dailyTask}
-          onChange= {handleDaily}
+          onChange={handleDaily}
           inputProps={{ 'aria-label': 'controlled' }}
         />
         <div>
           <TextField
             label="task"
             variant="filled"
-            sx={{ mb: 2, width:1/2 }}
+            sx={{ mb: 2, width: 1 / 2 }}
             onChange={handleName}
-            />
+          />
         </div>
         <TextField
           inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
           label="cantidad"
           variant="filled"
-          sx={{ width:1/4 }}
+          sx={{ width: 1 / 4 }}
           onChange={handleAmount}
         />
         <div>
@@ -73,14 +73,15 @@ function AddTask(props) {
               mt: 2,
               backgroundColor: '#21b6ae',
               '&:hover': {
-              backgroundColor: '#21b6ae',
-            }}}
+                backgroundColor: '#21b6ae',
+              },
+            }}
             onClick={handleSubmit}
           />
         </div>
       </form>
     </Box>
-  )
+  );
 }
 
 export default AddTask;

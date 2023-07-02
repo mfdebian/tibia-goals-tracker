@@ -17,48 +17,71 @@ function Goal(props) {
 
   const handleDelete = (id) => {
     deleteGoal(id);
-  }
+  };
 
   return (
     <Card variant="outlined">
       <CardContent>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
           <Typography variant="h5">{goal.name}</Typography>
-          <DeleteIcon color="primary" onClick={()=>{handleDelete(goal.id)}}/>
+          <DeleteIcon
+            color="primary"
+            onClick={() => {
+              handleDelete(goal.id);
+            }}
+          />
         </Box>
         <Divider variant="middle"></Divider>
         <Box>
           <Typography variant="caption">Logrado:</Typography>
           <Checkbox
             checked={goal.completed}
-            onChange={() => {setGoal(goal => ({...goal, completed: !goal.completed}))}}
+            onChange={() => {
+              setGoal((goal) => ({ ...goal, completed: !goal.completed }));
+            }}
           />
-          <Typography variant="caption" mr={1}>Intentos:</Typography>
-          <Fab 
-            size="small"
-            color="secondary"
-            aria-label="add"
-            onClick={()=>{setGoal(goal => ({...goal, currentAmount: goal.currentAmount - 1}))}}
-          >
-            <RemoveIcon />
-          </Fab>
-          <Typography variant="h6" margin={1} display="inline">{goal.currentAmount}</Typography>
+          <Typography variant="caption" mr={1}>
+            Intentos:
+          </Typography>
           <Fab
             size="small"
             color="secondary"
             aria-label="add"
-            onClick={()=>{setGoal(goal => ({...goal, currentAmount: goal.currentAmount + 1}))}}
+            onClick={() => {
+              setGoal((goal) => ({
+                ...goal,
+                currentAmount: goal.currentAmount - 1,
+              }));
+            }}
+          >
+            <RemoveIcon />
+          </Fab>
+          <Typography variant="h6" margin={1} display="inline">
+            {goal.currentAmount}
+          </Typography>
+          <Fab
+            size="small"
+            color="secondary"
+            aria-label="add"
+            onClick={() => {
+              setGoal((goal) => ({
+                ...goal,
+                currentAmount: goal.currentAmount + 1,
+              }));
+            }}
           >
             <AddIcon />
           </Fab>
         </Box>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 export default Goal;

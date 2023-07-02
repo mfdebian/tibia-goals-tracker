@@ -1,10 +1,9 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Chip from '@mui/material/Chip';
-
 
 function NotFound() {
   const error = useRouteError();
@@ -25,11 +24,11 @@ function NotFound() {
         color="secondary"
         label="Go back"
         aria-label="go back"
-        onClick={()=>navigate(-1)}
+        onClick={() => navigate(-1)}
         sx={{ mb: 2 }}
       />
     </Box>
-  )
+  );
 }
 
 export default NotFound;

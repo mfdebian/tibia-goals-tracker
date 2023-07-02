@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from 'react-router-dom';
 import { app } from './firebase';
 import { darkTheme } from './theme';
 import { router } from './routes';

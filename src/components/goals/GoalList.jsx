@@ -10,17 +10,17 @@ import { allGoalsQuery, getData } from '../../firestore';
 function GoalList() {
   const [goals, setGoals] = useState([]);
   const [showAddGoalForm, setShowAddGoalForm] = useState(false);
-  
-  useEffect(()=> {
+
+  useEffect(() => {
     getData(allGoalsQuery)
-      .then(res => {
-        res.forEach(element => {
-          addGoal({id: element.id, ...element.data()});          
+      .then((res) => {
+        res.forEach((element) => {
+          addGoal({ id: element.id, ...element.data() });
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
+      });
   }, []);
 
   const addGoal = (goal) => {
@@ -28,12 +28,12 @@ function GoalList() {
     let updatedGoals = [...goals];
     updatedGoals.unshift(goal);
     setGoals(updatedGoals);
-  }
+  };
 
   const deleteGoal = (id) => {
-    let updatedGoals = [...goals].filter(goal => goal.id !== id);
+    let updatedGoals = [...goals].filter((goal) => goal.id !== id);
     setGoals(updatedGoals);
-  }
+  };
 
   return (
     <Box sx={{ flexGrow: 1, m: 2 }}>
@@ -42,30 +42,25 @@ function GoalList() {
         color="secondary"
         label="Add goal"
         aria-label="add goal"
-        onClick={()=> {setShowAddGoalForm(showAddGoalForm => !showAddGoalForm)}}
+        onClick={() => {
+          setShowAddGoalForm((showAddGoalForm) => !showAddGoalForm);
+        }}
         sx={{ mb: 2 }}
       />
-      {
-        showAddGoalForm && <AddGoal  addGoal={addGoal} />
-      }
-      <Grid container spacing={1} >
+      {showAddGoalForm && <AddGoal addGoal={addGoal} />}
+      <Grid container spacing={1}>
         <Grid container item spacing={3}>
-          {
-            goals.map(goal => {
-              return (
-                <Grid item xs={4} key={goal.id} sx={{ width: '60em'}}>
-                  <Goal
-                    goal={goal}
-                    deleteGoal={deleteGoal}
-                  />
-                </Grid>
-              )
-            })
-          }
+          {goals.map((goal) => {
+            return (
+              <Grid item xs={4} key={goal.id} sx={{ width: '60em' }}>
+                <Goal goal={goal} deleteGoal={deleteGoal} />
+              </Grid>
+            );
+          })}
         </Grid>
       </Grid>
     </Box>
-  )
+  );
 }
 
 export default GoalList;
